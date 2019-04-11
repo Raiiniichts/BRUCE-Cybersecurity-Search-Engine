@@ -60,20 +60,14 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+For those assuming control of this project in Fall 2019, let Dongwon contact us and I can give over master control of the repository to an account.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Andrew Yang** - *Initial work* 
-* **Weiqin Wang** - *Initial work* 
+* **Andrew Yang** - *Initial work* - *Summer 2018 - Spring 2019*
+* **Weiqin Wang** - *Initial work* - *Summer 2018 - Spring 2019*
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
