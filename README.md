@@ -1,18 +1,14 @@
 # BRUCE Cybersecurity Database Search Engine
 
-One Paragraph of project description goes here
+The BRUCE Engine is a database search function that allows a user to search for a large number of cybersecurity courses through the domain bruce.ist.psu.edu. A search can return many courses in the area of cybersecurity. Each search result contains information such as professor, university, and textbook. It also includes a link to the course syllabus website and a screenshot preview of what the website looks like.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
 
-```
-Give examples
-```
 
 ### Installing
 
@@ -72,9 +68,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Andrew Yang** - *Initial work* 
+* **Weiqin Wang** - *Initial work* 
 
 ## License
 
@@ -82,6 +77,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Thanks to Dongwon Lee for overseeing this project.
+
