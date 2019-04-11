@@ -17,6 +17,16 @@ The BRUCE Engine is a database search function that allows a user to search for 
 ### Feature Classification
 
 ### Working with MongoDB
+For the purposes of this project, MongoDB is quite simple to use. Once you've uploaded the CSV to the bruce server, only a few steps before the database can be built. Perhaps easiest way to combine the existing csv with the new data is to use cat.
+
+```
+cat collection1.csv  collection2.csv > newcollection.csv
+```
+
+After you've combined the csv, mongoDB has an easy way to import the csv into a collection.
+```
+mongoimport --db users --collection contacts --type csv --headerline --file /opt/backups/contacts.csv
+```
 
 
 
@@ -24,10 +34,6 @@ The BRUCE Engine is a database search function that allows a user to search for 
 
 * MongoDb
 * HTML/CSS
-
-## Contributing
-
-For those assuming control of this project in Fall 2019, let Dongwon contact us and I can give over master control of the repository to an account.
 
 
 ## Authors
