@@ -16,6 +16,7 @@ The BRUCE Engine is a database search function that allows a user to search for 
 
 ### Feature Classification
 
+
 ### Working with MongoDB
 For the purposes of this project, MongoDB is quite simple to use. Once you've uploaded the CSV to the bruce server, only a few steps before the database can be built. Perhaps the easiest way to combine the existing csv with the new data is to use cat.
 
@@ -40,7 +41,7 @@ db.collection.find() (where collection is the name of the collection)
 It's important to INDEX the collection now so that the test.php file can properly search in the collection.
 An example of an index command. You should read more about it at https://docs.mongodb.com/manual/indexes/
 ```
-db.jan12019courses.createIndex(
+db.coursecollection.createIndex(
    {
      DOMAIN: "text",
      TITLE: "text",
@@ -51,7 +52,8 @@ db.jan12019courses.createIndex(
 
 ## Built With
 
-* MongoDb
+* MongoDB
+* PHP
 * HTML/CSS
 
 
