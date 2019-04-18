@@ -7,7 +7,7 @@ The BRUCE Engine is a database search function that allows a user to search for 
 
 
 ### Data Gathering
-
+The main method to gather course data at the moment is to use cybersecurity conference program commitee lists to get a list of professors. After that, we use a google search script to get their personal website, and then crawl each of the professor's personal websites to find likely course syllabi. In order to avoid duplicates, each new list of professors from a conference is compared against the total list of professor that have already been found.
 
 
 ### Course Filtering
@@ -48,8 +48,7 @@ db.coursecollection.createIndex(
    }
  )
 ```
-
-
+For a small change in the code or if only changing databases in MongoDB, it's probably most efficient to skip the test server step, and use the main server to see if the change went through. However, if making a big change to the .php or .html files, it's best to make a change in the test server first and then move the file over later.
 ## Built With
 
 * MongoDB
