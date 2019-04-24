@@ -68,6 +68,7 @@ For a small change in the code or if only changing databases in MongoDB, it's pr
 * [PHP == 7.0.33](https://www.php.net/) - Language to call the MongoDB data to the website 
 * HTML5
 * CSS3
+* [MongoDB == 3.6.12](https://www.mongodb.com/) - Database used
 ### Important Modules to pip install in the CentOS environment
 * [BeautifulSoup == 4.4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The Web Scraping 
 * [requests == 2.21](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
