@@ -18,12 +18,18 @@ The main method to gather course data at the moment is to use cybersecurity conf
 * Note: the distributioin of the dataset varies depending of the web scraping methods, therefore the testing accuracy might change. 
 
 ### Feature Extraction 
-* Metadata extraction including: Professor names& phone number& email address, school name, course title, year of course.
+Metadata extraction including: Professor names& phone number& email address, school name, course title, year of course.
 
 
 ### Feature Classification
 
-
+### Accessing the HTML/CSS Files
+When you login to bruce.ist.psu.edu, you'll be logged into /home/xxx1234. Go to the directory bruce by using these commands.
+```
+cd ..
+cd ..
+cd data/websites/bruce
+```
 ### Working with MongoDB
 For the purposes of this project, MongoDB is quite simple to use. Once you've uploaded the CSV to the bruce server, only a few steps before the database can be built. Perhaps the easiest way to combine the existing csv with the new data is to use cat.
 
@@ -59,17 +65,19 @@ For a small change in the code or if only changing databases in MongoDB, it's pr
 ## Built With
 
 * [Python== 3.5]  - Language
-
-* [BeautifulSoup==4.4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The Web Scraping 
-* [requests==2.21](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
-* [urllib==3.7.3](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
+* [PHP == 7.0.33](https://www.php.net/) - Language to call the MongoDB data to the website 
+* HTML5
+* CSS3
+* [BeautifulSoup == 4.4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The Web Scraping 
+* [requests == 2.21](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
+* [urllib == 3.7.3](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
 * [tldextract](https://github.com/john-kurkowski/tldextract) - The Web Scraping  -Domain Extractor 
 
 * [textblob](https://textblob.readthedocs.io/en/dev/) - Page Classificatoin- Naive Bayes Algorithm 
-* [Scikit-learn==0.20.3](https://scikit-learn.org/stable/modules/svm.html) - Page Classificatoin- SVM 
+* [Scikit-learn == 0.20.3](https://scikit-learn.org/stable/modules/svm.html) - Page Classificatoin- SVM 
 
-* [nltk==3.4](https://www.nltk.org/) -Feature Extraction - Named Entity extraction 
-* [html2text==2018.1.9](https://pypi.org/project/html2text/) - Feature Extraciton 
+* [nltk == 3.4](https://www.nltk.org/) -Feature Extraction - Named Entity extraction 
+* [html2text == 2018.1.9](https://pypi.org/project/html2text/) - Feature Extraciton 
 
 
 ## Authors
