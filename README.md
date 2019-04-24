@@ -58,9 +58,18 @@ db.coursecollection.createIndex(
 For a small change in the code or if only changing databases in MongoDB, it's probably most efficient to skip the test server step, and use the main server to see if the change went through. However, if making a big change to the .php or .html files, it's best to make a change in the test server first and then move the file over later.
 ## Built With
 
-* MongoDB
-* PHP
-* HTML/CSS
+* [Python== 3.5]  - Language
+
+* [BeautifulSoup==4.4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The Web Scraping 
+* [requests==2.21](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
+* [urllib==3.7.3](https://docs.python.org/3/library/urllib.html) - The Web Scraping 
+* [tldextract](https://github.com/john-kurkowski/tldextract) - The Web Scraping  -Domain Extractor 
+
+* [textblob](https://textblob.readthedocs.io/en/dev/) - Page Classificatoin- Naive Bayes Algorithm 
+* [Scikit-learn==0.20.3](https://scikit-learn.org/stable/modules/svm.html) - Page Classificatoin- SVM 
+
+* [nltk==3.4](https://www.nltk.org/) -Feature Extraction - Named Entity extraction 
+* [html2text==2018.1.9](https://pypi.org/project/html2text/) - Feature Extraciton 
 
 
 ## Authors
