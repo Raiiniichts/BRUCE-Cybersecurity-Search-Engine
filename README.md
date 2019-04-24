@@ -11,7 +11,14 @@ The main method to gather course data at the moment is to use cybersecurity conf
 
 
 ### Course Filtering
+### Page Classification 
+* [Naive Bayes] Feed directly with text corpus, achieved >90% test accuracy (from google search corpus).
+* [SVM] Feed directly with text corpus achieved >95% test accuracy (from google search corpus).
+* [LSTM] Feed directly with text corpus, title, numbers of hyperlinks, numbers of pictures achieved >97% test  accuracy(from google search corpus). (reference:https://www.linkedin.com/pulse/identifying-clickbaits-using-machine-learning-abhishek-thakur/) 
+* Note: the distributioin of the dataset varies depending of the web scraping methods, therefore the testing accuracy might change. 
 
+### Feature Extraction 
+* Metadata extraction including: Professor names& phone number& email address, school name, course title, year of course.
 
 
 ### Feature Classification
