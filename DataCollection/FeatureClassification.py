@@ -1,4 +1,5 @@
 #from textblob.classifiers import NaiveBayesClassifier
+# Make sure this stuff is imported beforehand, python should warn you
 from bs4.element import Comment
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
@@ -15,6 +16,7 @@ import urllib
 import html2text
 import requests 
 
+# This part is to get the most-likely-to-be professor names by comparing them to a large csv of names.
 def get_continuous_chunks(text):
     new =[]
     newlist = []
@@ -98,12 +100,12 @@ def get_continuous_chunks(text):
             new_list.append(i)
 
     return ('& ').join(new_list)
-
+# Uses regex for phone numbers
 def extract_phone_numbers(string):
     r = re.compile(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})')
     phone_numbers = r.findall(string)
     return (" & ").join([re.sub(r'\D', '', number) for number in phone_numbers])
-
+# Uses regex for email addresses
 def extract_email_addresses(string):
     r = re.compile(r'[\w\.-]+@[\w\.-]+')
     a = r.findall(string)
@@ -112,7 +114,8 @@ def extract_email_addresses(string):
         if i not in b:
             b.append(i)
     return (" & ").join(b)
-
+# Uses some simple string manipulation to get the domain name
+# After the switch to conferencefinder which goes to the professor personal websites, another method needs to be found
 def domain_finder(row):
     row = str(row)
     loc = row.find(".edu")
@@ -123,7 +126,7 @@ def domain_finder(row):
     row = row[dashdoc+1:]
     row = row.upper()
     return str(row)
-
+# Finding year with regex
 def year_finder(text):
     m = re.compile('(Fall|Spring|Summer)\s20(0|1)\d{1}')
     fina = m.search(text)
@@ -145,7 +148,7 @@ def year_finder(text):
     else:
         return fina.group(0)
 
-
+# parses out the unimportant words from a doc
 def get_doc(data):
     new_list = []
     data = data.split()
@@ -159,11 +162,12 @@ def get_doc(data):
             d = mystemmer.stem(d)
             new_list.append(d)
     return " ".join(new_list)
-
+# Regex for title
 def get_title(url):    
     soup =  BeautifulSoup(url,'html.parser')
     title = soup.find('title').text
     return title
+# Regex for textbook
 def get_textbook(text):
     tb = re.compile('.*ISBN.*|.*Edition.*|.*edition.*|.*, [A-Z]\..*')
     textbooks = ""
@@ -172,6 +176,7 @@ def get_textbook(text):
         for textbook in li:
             textbooks += '\n'+ textbook
     return textbooks
+# Regex to see if the professor has these elements listed for the course
 def get_tests(text):
     fe = re.compile('Final Exam|Final exam')
     mid = re.compile('Midterm|Mid-term')
@@ -187,6 +192,11 @@ def get_tests(text):
     if quiz.search(text) != None:
         pres[3] = True
     return pres
+
+# Read csv of links to the coursepages. Then, use html2text and requests modules to get the no-HTML markdown text of the website.
+# Then use the above functions to place the information into a dataframe (pandas module), and then write to whatever csv
+# Recommend that the end csv is dated to avoid confusion with multiple versions.
+
 df = pd.read_csv("Final.csv",error_bad_lines=False,encoding='utf-8')
 i = 0
 while i <len(df):
