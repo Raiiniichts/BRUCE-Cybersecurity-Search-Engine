@@ -1,17 +1,21 @@
 <?php
+/*
+	Simple PHP call to the mongoDB client, which returns an array of info including unicount, profcount, and coursecount.
+	It is necessary to json_encode this array and then echo it to the HTML code in index.html to parse.
+*/
 try {
     $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
     $uni = new MongoDB\Driver\Command([
-	'distinct' => 'mar1819courses',
-	'key' => 'DOMAIN',
+		'distinct' => 'mar1819courses',
+		'key' => 'DOMAIN',
     ]);
     $prof = new MongoDB\Driver\Command([
-	'distinct' => 'mar1819courses',
-	'key' => 'PROF',
+		'distinct' => 'mar1819courses',
+		'key' => 'PROF',
     ]);
     $courses = new MongoDB\Driver\Command([
-	'distinct' => 'mar1819courses',
-	'key' => 'URL',
+		'distinct' => 'mar1819courses',
+		'key' => 'URL',
     ]);
 
     $unicount = $mng -> executeCommand('users',$uni);
