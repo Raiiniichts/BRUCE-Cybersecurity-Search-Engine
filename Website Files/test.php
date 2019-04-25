@@ -1,11 +1,14 @@
 
 <?php
+/*
+	Creates a filter based on "projection" and "sort" to create a score that is used to rank the search results on how related it is to the search. Then, it also gets the rows from each column, puts them into an array, and sends them off.
 
+*/
 try {
     $mng = new MongoDB\Driver\Manager("mongodb://localhost:27017");
     $div = $_POST['title'];
     $curpage = $_POST['page'];
-    //$div = "Harvard";
+   
     $filter = [
     '$text' => ['$search' => $div]];
     $options =  [
@@ -27,16 +30,16 @@ try {
     	$domain = $row -> DOMAIN;
     	$name =  $row -> PROF;
     	$title = $row -> TITLE;
-	$content = $row -> CONTENT;
-	$year = $row -> YEAR;
-	$url = $row -> URL;
-	$image = $row -> IMAGE;
-	$score = $row -> score;
-	$phone = $row -> PHONE;
-	$email = $row -> EMAIL;
-	$textbook = $row -> TEXTBOOK;
-	$test = $row -> TEST;
-	$i = $i+1;	
+		$content = $row -> CONTENT;
+		$year = $row -> YEAR;
+		$url = $row -> URL;
+		$image = $row -> IMAGE;
+		$score = $row -> score;
+		$phone = $row -> PHONE;
+		$email = $row -> EMAIL;
+		$textbook = $row -> TEXTBOOK;
+		$test = $row -> TEST;
+		$i = $i+1;	
 	
 	$temp = array(
 		domain => $domain,
@@ -54,17 +57,12 @@ try {
 	);
 	//paginate here
 	$numofpages = ceil($i/$rowsperpage);
-	/**$currentpage = min($pages, filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT, array(
-        	'options' => array(
-            		'default'   => 1,
-            		'min_range' => 1,
-        	),
-    	)));**/
+
 	
 	if($i<=($curpage)*10 and $i>($curpage-1)*10){
 		$total[] = $temp;
 	}	
-    }
+}
     echo json_encode(array("arr"=>$total,"num"=>$i,"pages"=>$numofpages));    
 }
 catch (MongoDB\Driver\Exception\ConnectionTimeoutException $e)
