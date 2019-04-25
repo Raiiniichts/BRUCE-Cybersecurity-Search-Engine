@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="/finbruce/brucefav.ico" type="image/x-icon">
 <link rel="icon" href="/finbruce/brucefav.ico" type="image/x-icon">
 <title>Bruce Cybersecurity Course Search Engine</title>
-<!------ Include the above in your HEAD tag ---------->
+
 <style type="text/css">
 	.container{
 	    font-family:"Roboto",Arial,Verdana,sans-serif;
@@ -39,7 +39,7 @@
 	.search-result span.plus a:hover { background-color: #414141; }
 	.search-result span.plus a i { color: #fff !important; }
 	.search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
-    .brucesearch {
+.brucesearch {
 	height:10%;
 	width:auto;
 	display:inline-block;
@@ -62,20 +62,20 @@
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
-    #tle{
-    	font-weight: bold;
-    }
+#tle{
+  font-weight: bold;
+}
    
-    form.a{
-        display: inline-block
-    }
-    form.example input[type=text] {
-        padding: 10px;
-        font-size: 17px;
-        border: 1px solid grey;
-        width:50%;
+form.a{
+  display: inline-block
+}
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  width:50%;
 	font-family: Roboto;
-        background: #f1f1f1;
+  background: #f1f1f1;
 	display:inline-block;
    }
     form.example::after {
@@ -155,7 +155,9 @@ hr {
     border-width: 1px;
 }
 </style>
- 
+<!-- 
+	Simple HTML creating the searchbar, and currently unused dropdown search setting feature.
+-->
 <label id = "testcase"  class="container">
      <hgroup class="mb20">
 	<form class="example" action="result.html" method="GET">
@@ -175,6 +177,10 @@ hr {
     <a href="#metadata">Metadata</a>
   </div>
 </div>	
+				
+<!--
+	The javascript below, myFunction, gets the string of the URL and cuts it so that the actual search term is preserved.
+-->
 </h1>
    	<h2 class="lead" style="float:left;">Results: <strong class="text-danger" id = "resnumber"></strong> learning resources were found for </h2>
 	<h2 class="lead" id = "tle"></h2>
@@ -191,6 +197,11 @@ hr {
 	 }    
          carName =  myFunction();    
 	</script>	
+	
+	<!--
+		This part gives the page number of the search, detected by looking for a # anchor and then the number after that #.
+		In theory this should run every time the page reloads, but there is a bug regarding the pagination buttons below.
+	-->
 	<script>
          var curpage = 0 ;
 	      function pageFunction(){
@@ -206,7 +217,7 @@ hr {
 	$(document).ready(pageFunction);
 	curpage = pageFunction();	
 	</script>
-   
+
 <div id = "containerElement"><div>
     <div class="col-xs-12 col-sm-6 col-md-12" id = "results" style="margin-top: 20px;">
 					
@@ -217,8 +228,12 @@ hr {
   <a class="clickme" href="#2">2</a>
   <a href="#">&raquo;</a> 
 </div>
-    <script type="text/javascript">
-        function displayResults(domain,name,title,year,content,phone,email,textbook,test1,score){
+	 
+<!-- 
+	This function displays all the results that are contained within a single search element cell. It is called by the AJAX call function, and all it does is take the content found and place them in the correct html elements. You'll see that replaceWith is the best function to use, because the other common ways will cause all elements of a certain id selector (#).
+-->
+<script type="text/javascript">
+function displayResults(domain,name,title,year,content,phone,email,textbook,test1,score){
 		var domain = domain.toString();
 		var name = name.toString();
 		var hashplace = 0;
@@ -226,8 +241,7 @@ hr {
 			hashplace = name.search('&');
 			name = name.substring(0,hashplace);
 		}
-	//	alert(hashplace);
-	//	alert(name);
+
 	        var title = title.toString();
 		var year = year.toString();
 		var score = score.toFixed(3);
@@ -292,9 +306,13 @@ hr {
 			
 		$(".collapsecontent").replaceWith(moreinfo+'<br>'+finale+'<br>'
 		+mid+'<br>'+proj+'<br>'+quiz+'<br>'+phone+'<br>'+email);
-        }       
+        }      
     </script>
-    <script type="text/javascript">
+  <!--
+		This setPages function manages the pagination buttons below the search elements. It starts by calculating the first numbered button (there are only 10 on a page at a time), and then getting the current page. Then, it assigns all the other buttons their page #.
+		Then, the left and right buttons are assigned attributes to the correct # anchor and to refresh the page on click. Unfortunately, the page refreshes but the elements don't change. This is a pretty big bug that I've been unable to fix, it broke suddenly one day when I had not changed the code in multiple weeks. Good luck.
+	-->	
+	
 	function setPages(pagenum,curpage){
 		$(".pagination").empty();
 		
@@ -333,7 +351,12 @@ hr {
 	}
     </script>
     
-    <script type="text/javascript">
+    
+			
+	<!--
+		This sets the url for all the images that are in the search elements and the title of the webpage displayed.
+		Also, when the "expand cell" button is pressed, the information is handled in this function with .btn.btn-info 
+	-->
 	function urlSet(url,images){
 		$(".link").each(function(index){
 			$(this).attr('href',url[index]);
@@ -355,6 +378,10 @@ hr {
 			$(this).attr('id','info'+id.toString());
 		});
 	}
+<!--
+	This is the ajax function. All it does is call the appropriate array of information with the search and the currentPage.
+	Then it pushes that info into the appropriate functions at the end.
+	-->
 </script>
     <script type="text/javascript">
       $(function(){
@@ -399,7 +426,10 @@ hr {
         })
       });
     </script>
-<!-- SAME SCRIPT BUT FOR THE BOTTOM BUTTONS-->
+<!-- 
+	SAME SCRIPT BUT FOR THE BOTTOM BUTTONS
+	I found this fix to be necessary, otherwise there was pretty much no other way the pagination buttons would respond.d
+-->
     <script type="text/javascript">
       $(document).ready(function(){
 	$('label').on("click",".botnum",function(e){
@@ -446,7 +476,9 @@ hr {
 	});
       });
     </script>
-
+<!--
+	This html code just creates the standard framework for each cell, that is then changed for each search element and added to the page.
+	-->
     <script class="botpage" type="text/html">
 	<a class="botnum"></a>
     </script> 
