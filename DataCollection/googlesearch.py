@@ -4,8 +4,8 @@ import re
 import time
 import random
 
-#write =  open('new.csv', "w", newline='\n')
-#spamwriter = csv.writer(write, delimiter=' ')
+# Old Code that searched to Google with keywords + university names and tried to get the best results.
+# Lots of unusable pages found, so was ditched. Similar to conferencefinder.py
 csvv = open('test3.csv','w')
   
 search_key = ['Cybersecurity Course Syllabus',
@@ -14,7 +14,7 @@ search_key = ['Cybersecurity Course Syllabus',
               'Information Security Course Syllabus',
               'Cybersecurity Law Course Syllabus']
 
-#random_time = [41,35,13,20,45,30,30,40,32,38,44,18,47,19,28,26,22,32,34,17]
+
 with open('domains2.csv', 'r') as csvfile:
     num_page = 1
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
